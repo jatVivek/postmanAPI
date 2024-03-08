@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "0332fb7f-c856-4eff-b90f-688659d86618",
+		"name": "Requres",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19044057",
+		"_collection_link": "https://interstellar-meadow-843626.postman.co/workspace/My-Workspace~dde75991-d7c5-40b2-8837-99993325855b/collection/19044057-0332fb7f-c856-4eff-b90f-688659d86618?action=share&source=collection_link&creator=19044057"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"response code should be OK\", function(){\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"})\r",
+							"pm.test(\"response time should be below 400\", function(){\r",
+							"    pm.expect(pm.response.responseTime).be.below(400);\r",
+							"})\r",
+							"pm.test(\"Status Code should 200 or 201\", function(){\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,200]);\r",
+							"})\r",
+							"pm.test(\"check response\", function(){\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data[0].first_name).to.eql('Michael')\r",
+							"})\r",
+							"pm.test(\"first_name should be Tobias\", function(){\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data[2].first_name).to.eql('Tobias');\r",
+							"})\r",
+							"pm.test(\"last_name should be Funke\", function(){\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data[2].last_name).to.eql('Funke');\r",
+							"})\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hamshkl",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"response code should be Created\", function(){\r",
+							"    pm.response.to.have.status(\"Created\");\r",
+							"})\r",
+							"pm.test(\"response time should be below 400\", function(){\r",
+							"    pm.expect(pm.response.responseTime).be.below(400);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"15\",\r\n    \"name\": \"vivek\",\r\n    \"last name\": \"jat\",\r\n    \"adderess\": \"Dhar\",\r\n    \"Phane number\":\"6265138399\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "PMAK-63217e3c55a7fa78ab871db4-1b0a611f8be97c742862e912fc3f127380",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Vivek",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.environment.set(\"Mock_Link\",\"https://6063901e-f0d8-48fa-83ae-b8485cdd1c6d.mock.pstmn.io\")"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "user",
+			"value": "page-2",
+			"type": "string"
+		},
+		{
+			"key": "Link",
+			"value": "https://reqres.in/",
+			"type": "string"
+		}
+	]
+}
